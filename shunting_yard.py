@@ -1,6 +1,13 @@
 # Bernard Wong
 # Shunting Yard Algorithm
 
+# The metacharacters that defines the operation of the regular expression.
+# * : 0 or more
+# + : 1 or more
+# ? : 0 or 1
+# . : concatenate
+# | : one or the other
+metachar = {'*': 50, '+': 50, '?': 50, '.': 40, '|': 30}  # value represents the precedence level
 
 def convert(infix):
     """ Uses Shunting Yard Algorithm to convert infix expression to postfix expression.
@@ -12,14 +19,6 @@ def convert(infix):
             postfix (str):The postfix expression which was converted from infix.
 
     """
-    # The metacharacters that defines the operation of the regular expression.
-    # * : 0 or more
-    # + : 1 or more
-    # ? : 0 or 1
-    # . : concatenate
-    # | : one or the other
-    metachar = {'*': 50, '+': 50, '?': 50, '.': 40, '|': 30}  # value represents the precedence level
-
     stack = []
     postfix = ""
 

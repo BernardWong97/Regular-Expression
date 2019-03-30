@@ -1,7 +1,7 @@
 import unittest
 from shunting_yard import convert
 from thompsons import run_thompson
-from regular_expression import reg_match
+from regular_expression import reg_match, check_concat
 from collections import OrderedDict
 
 
@@ -42,6 +42,10 @@ class ThompsonsTest(unittest.TestCase):
         self.assertFalse(reg_match("A.B.C*", "aBCCccCC"))
         print("Match case sensitive \"%s\" to \"%s\" is: %s"
               % ("A.b.C*", "aBCCccCC", reg_match("A.B.C*", "aBCCccCC", False)))
+
+    def test_regex_concat(self):
+        self.assertEqual(check_concat("abc|(de).f"), "a.b.c|(d.e).f")
+        print("Add concat operator \"%s\": \"%s\"" % ("abc|(de).f", "a.b.c|(d.e).f"))
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-from shunting_yard import convert
+from shunting_yard import convert, metachar
 from thompsons import run_thompson
 
 
@@ -18,6 +18,7 @@ def reg_match(infix, string, case_insens=False):
         string = string.lower()
 
     # Convert infix into postfix and transform into NFA
+    infix = check_concat(infix)
     postfix = convert(infix)
     nfa = run_thompson(postfix)
 
@@ -55,3 +56,22 @@ def current_states(state):
             state_set |= current_states(state.edge_2)
 
     return state_set
+
+
+def check_concat(infix):
+    new_infix = ""
+    operators = {**metachar, '(': 60, ')': 60}
+    index = 0
+
+    for c in infix:
+        if index + 1 != len(infix):
+            if c not in operators and infix[index + 1] not in operators:
+                new_infix += c + '.'
+            else:
+                new_infix += c
+        else:
+            new_infix += c
+
+        index += 1
+
+    return new_infix
