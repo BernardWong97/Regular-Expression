@@ -16,7 +16,7 @@ def convert(infix):
     # * : 0 or more
     # . : concatenate
     # | : one or the other
-    metachar = {'*': 50, '.': 40, '|': 30}  # value represents the precedence level
+    metachar = {'*': 50, '+': 50, '.': 40, '|': 30}  # value represents the precedence level
 
     stack = []
     postfix = ""
@@ -29,7 +29,7 @@ def convert(infix):
                 postfix += stack.pop()
             stack.pop()  # pop the open bracket off the stack
         elif c in metachar:
-            # if c's value is smaller than the value of the last element of the stack, pop and add to postfix
+            # if c's precedence is equal smaller than the value of the last element of the stack, pop and add to postfix
             while stack and metachar.get(c, 0) <= metachar.get(stack[-1], 0):
                 postfix += stack.pop()
             stack.append(c)

@@ -11,6 +11,10 @@ class ThompsonsTest(unittest.TestCase):
         print("Convert (a.b)|(c*.d) to postfix: " + postfix)
         self.assertEqual(postfix, "ab.c*d.|")
 
+        postfix = convert("(a.b+)|(c*.d)")
+        print("Convert (a.b+)|(c*.d) to postfix: " + postfix)
+        # self.assertEqual(postfix, "ab.c*d.|")
+
     def test_thompson(self):
         print("Test function but no visualization on NFA object: " + run_thompson("ab.cd.|").__str__())
 
@@ -20,7 +24,8 @@ class ThompsonsTest(unittest.TestCase):
                                 ("a.b.c*", [False, True, False, True, False, False]),
                                 ("a.(b|d).c*", [False, True, False, True, False, False]),
                                 ("(a.(b|d))*", [True, False, False, False, True, False]),
-                                ("a.(b.b)*.c", [False, False, True, False, False, False])
+                                ("a.(b.b)*.c", [False, False, True, False, False, False]),
+                                ("a.b+.c*", [False, True, True, True, False, True])
                                 ])
 
         for i in infix_result:
