@@ -19,13 +19,14 @@ class ThompsonsTest(unittest.TestCase):
         print("Test function but no visualization on NFA object: " + run_thompson("ab.cd.|").__str__())
 
     def test_regex(self):
-        string_list = ["", "abc", "abbc", "abcc", "abad", "abbbc"]
+        string_list = ["", "abc", "abbc", "abcc", "abad", "abbbc", "abcddd"]
         infix_result = OrderedDict([
-                                ("a.b.c*", [False, True, False, True, False, False]),
-                                ("a.(b|d).c*", [False, True, False, True, False, False]),
-                                ("(a.(b|d))*", [True, False, False, False, True, False]),
-                                ("a.(b.b)*.c", [False, False, True, False, False, False]),
-                                ("a.b+.c*", [False, True, True, True, False, True])
+                                ("a.b.c*", [False, True, False, True, False, False, False]),
+                                ("a.(b|d).c*", [False, True, False, True, False, False, False]),
+                                ("(a.(b|d))*", [True, False, False, False, True, False, False]),
+                                ("a.(b.b)*.c", [False, False, True, False, False, False, False]),
+                                ("a.b+.c*", [False, True, True, True, False, True, False]),
+                                ("a.b?.c*.d?", [False, True, False, True, False, False, False])
                                 ])
 
         for i in infix_result:

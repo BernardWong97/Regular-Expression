@@ -14,9 +14,11 @@ def convert(infix):
     """
     # The metacharacters that defines the operation of the regular expression.
     # * : 0 or more
+    # + : 1 or more
+    # ? : 0 or 1
     # . : concatenate
     # | : one or the other
-    metachar = {'*': 50, '+': 50, '.': 40, '|': 30}  # value represents the precedence level
+    metachar = {'*': 50, '+': 50, '?': 50, '.': 40, '|': 30}  # value represents the precedence level
 
     stack = []
     postfix = ""

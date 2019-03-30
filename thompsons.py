@@ -81,6 +81,17 @@ def run_thompson(postfix):
             nfa.accept_state.edge_1, nfa.accept_state.edge_2 = new_accept_state, nfa.initial_state
             # push back the new bigger nfa to the stack
             nfa_stack.append(NFA(new_initial_state, new_accept_state))
+        elif c == '?':
+            # pop one nfa from stack
+            nfa = nfa_stack.pop()
+            # create a new initial and accept states
+            new_initial_state, new_accept_state = State(), State()
+            # connect new initial state to the nfa's initial state and new accept state
+            new_initial_state.edge_1,  new_initial_state.edge_2 = nfa.initial_state, new_accept_state
+            # connect nfa's accept state to new accept state
+            nfa.accept_state.edge_1 = new_accept_state
+            # push back the new bigger nfa to the stack
+            nfa_stack.append(NFA(new_initial_state, new_accept_state))
         else:
             # if c is normal character, create a NFA and push to stack
             initial_state, accept_state = State(), State()
