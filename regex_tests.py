@@ -28,6 +28,15 @@ class ThompsonsTest(unittest.TestCase):
                 self.assertEqual(reg_match(i, s), infix_result[i][string_list.index(s)])
                 print("Match \"%s\" to \"%s\" is: %s" % (i, s, reg_match(i, s)))
 
+    def test_regex_case(self):
+        self.assertTrue(reg_match("A.B.C*", "aBCCccCC", True))
+        print("Match case insensitive \"%s\" to \"%s\" is: %s"
+              % ("A.b.C*", "aBCCccCC", reg_match("A.B.C*", "aBCCccCC", True)))
+
+        self.assertFalse(reg_match("A.B.C*", "aBCCccCC"))
+        print("Match case sensitive \"%s\" to \"%s\" is: %s"
+              % ("A.b.C*", "aBCCccCC", reg_match("A.B.C*", "aBCCccCC", False)))
+
 
 if __name__ == '__main__':
     unittest.main()

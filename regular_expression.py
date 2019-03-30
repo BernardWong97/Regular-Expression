@@ -2,16 +2,21 @@ from shunting_yard import convert
 from thompsons import run_thompson
 
 
-def reg_match(infix, string):
+def reg_match(infix, string, case_insens=False):
     """ Matching the regular expression and the string.
 
         Parameters:
             infix (str):The infix expression which is to be convert into postfix and transform into NFA.
             string (str):The string which is to be match against the NFA.
+            case_insens (bool):Optional argument which True for case insensitive matching and vice versa.
 
         Returns:
             nfa.accept_state in cur_state (bool):Returns true if NFA accept state is in the current set of state.
     """
+    if case_insens:
+        infix = infix.lower()
+        string = string.lower()
+
     # Convert infix into postfix and transform into NFA
     postfix = convert(infix)
     nfa = run_thompson(postfix)
