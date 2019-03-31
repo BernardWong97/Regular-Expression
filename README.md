@@ -102,7 +102,7 @@ Transform postfix expression into NFA.
 
 #### regular_expression.py
 Takes in a regular expression postfix notation, a string and a boolean for case insensitivity (default is false).  
-If the regular expression have no '.' operator, will add the operator into it ( like "abcd" become "a.b.c.d")
+If the regular expression have no '.' operator, will add the operator into it ( like "abcd" become "a.b.c.d").  
 Matching the regular expression and the string (both case sensitive and insensitive).
 
 #### runner.py
