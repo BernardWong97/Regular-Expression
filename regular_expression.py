@@ -59,13 +59,21 @@ def current_states(state):
 
 
 def check_concat(infix):
+    """ Check if two characters which is not metacharacters are beside each other and add '.' operator between them.
+
+        Parameters:
+            infix (State):The infix notation of the expression string.
+
+        Returns:
+            new_infix (str):Returns the new infix.
+    """
     new_infix = ""
     operators = {**metachar, '(': 60, ')': 60}
     index = 0
 
     for c in infix:
-        if index + 1 != len(infix):
-            if c not in operators and infix[index + 1] not in operators:
+        if index + 1 != len(infix):  # if c is not last character
+            if c not in operators and infix[index + 1] not in operators:  # if both character are not operators
                 new_infix += c + '.'
             else:
                 new_infix += c

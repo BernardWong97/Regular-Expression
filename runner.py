@@ -26,12 +26,20 @@ def main():
         if new_matching == 'Y':
             continue
         else:
-            break
+            cont = False
 
-    print("Thank you for using Regular Expression String Matching Program!\nBye Bye!")
+    print("Thank you for using Regular Expression String Matching Program!\n=== Bye Bye! ===")
 
 
 def input_validation(message):
+    """ Validate the input Y or N only.
+
+        Parameters:
+            message (str):The message to ask user what to input.
+
+        Returns:
+            user_input (str):Returns Y or N.
+    """
     user_input = input(message)
     user_input = user_input.upper()
 
