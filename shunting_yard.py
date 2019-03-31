@@ -9,6 +9,7 @@
 # | : one or the other
 metachar = {'*': 50, '+': 50, '?': 50, '.': 40, '|': 30}  # value represents the precedence level
 
+
 def convert(infix):
     """ Uses Shunting Yard Algorithm to convert infix expression to postfix expression.
 
@@ -41,3 +42,5 @@ def convert(infix):
         postfix += stack.pop()
 
     return postfix
+
+
